@@ -6,7 +6,7 @@ namespace GradeBook.GradeBooks
 {
     public class RankedGradeBook : BaseGradeBook
     {
-        public RankedGradeBook(string name) : base(name)
+        public RankedGradeBook(string name, bool isWeighted) : base(name, isWeighted)
         {
             Type = GradeBookType.Ranked;
         }
@@ -24,9 +24,10 @@ namespace GradeBook.GradeBooks
 
             for (int level = 0; level < 5; level++)
             {
-                if(grades[(threshold * (level + 1)) - 1] <= averageGrade)
+                if (grades[(threshold * (level + 1)) - 1] <= averageGrade)
                 {
-                    switch(level){
+                    switch (level)
+                    {
                         case 0: return 'A';
                         case 1: return 'B';
                         case 2: return 'C';
@@ -39,7 +40,7 @@ namespace GradeBook.GradeBooks
 
         public override void CalculateStatistics()
         {
-            if(Students.Count < 5)
+            if (Students.Count < 5)
             {
                 Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
                 return;
@@ -49,7 +50,7 @@ namespace GradeBook.GradeBooks
 
         public override void CalculateStudentStatistics(string name)
         {
-            if(Students.Count < 5)
+            if (Students.Count < 5)
             {
                 Console.WriteLine("Ranked grading requires at least 5 students with grades in order to properly calculate a student's overall grade.");
                 return;
